@@ -1,5 +1,5 @@
 import streamlit as st
-from chatbot_backend import demo_memory, demo_conversation
+from backend import demo_memory, demo_conversation
 
 # Initialize memory for the chatbot
 if 'memory' not in st.session_state:
