@@ -32,7 +32,7 @@ def demo_conversation(input_text, memory):
     json_content = json.dumps(json_data)  # Convert JSON data to string
 
     # Integrate JSON data into the input
-    input_with_data = f"{input_text}\n\nHere is some personal information to use in your response: {json_content}"
+    input_with_data = f"{input_text}\n\nHere is my personal information to use in your response: {json_content}"
 
     chat_replay = llm_conversation.predict(input=input_with_data)
     return chat_replay
