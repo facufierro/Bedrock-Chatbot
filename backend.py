@@ -2,7 +2,7 @@
 import json
 from langchain_community.chat_models import BedrockChat
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationChain
+from langchain.chains.conversation.base import ConversationChain
 
 
 def read_json_file(file_path):
