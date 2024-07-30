@@ -19,10 +19,8 @@ def initialize_chatbot():
 
 
 def setup_memory_with_personal_info():
-    # Load JSON data
     json_data = read_json_file('personal_information.json')
 
-    # Initialize the memory and add the JSON data
     memory = ConversationBufferMemory(
         memory_key='history',
         input_key='input',
@@ -30,7 +28,6 @@ def setup_memory_with_personal_info():
         ai_prefix="Bot"
     )
 
-    # Add the personal information to the memory in a natural conversation way
     personal_info_text = (
         f"Here is some information about me: "
         f"My name is {json_data['name']}, "

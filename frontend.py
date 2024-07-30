@@ -1,16 +1,19 @@
 # frontend.py
 import streamlit as st
-from backend import setup_memory_with_personal_info, generate_conversation_response
+from models.chatbot import Chatbot
+
 
 def initialize_session():
-    if 'memory' not in st.session_state:
-        st.session_state.memory = setup_memory_with_personal_info()
+    if 'chatbot' not in st.session_state:
+        st.session_state.chatbot = Chatbot()
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
 
+
 def clear_chat_history():
     st.session_state.chat_history = []
-    st.session_state.memory = setup_memory_with_personal_info()
+    st.session_state.chatbot.memory = st.session_state.chatbot.initialize_context()
+
 
 def display_chat_interface():
     st.title("Chatbot Interface")
@@ -21,7 +24,7 @@ def display_chat_interface():
         submit_button = st.form_submit_button(label='Send')
 
     if submit_button and user_input:
-        bot_response = generate_conversation_response(user_input, st.session_state.memory)
+        bot_response = st.session_state.chatbot.generate_response(user_input)
         st.session_state.chat_history.append({"user": user_input, "bot": bot_response})
 
     for chat in st.session_state.chat_history:
