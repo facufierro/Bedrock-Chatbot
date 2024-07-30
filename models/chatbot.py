@@ -1,3 +1,5 @@
+# Chatbot class with model and memory management
+
 from langchain_community.chat_models import BedrockChat
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
